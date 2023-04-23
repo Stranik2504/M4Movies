@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using M4Movies.Data;
 using M4Movies.Model;
 
-namespace M4Movies.Pages.Movies
+namespace M4Movies.Pages.Serials
 {
     public class CreateModel : PageModel
     {
@@ -25,18 +25,18 @@ namespace M4Movies.Pages.Movies
         }
 
         [BindProperty]
-        public Movie Movie { get; set; } = default!;
+        public Serial Serial { get; set; } = default!;
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Movie == null || Movie == null)
-        {
-            return Page();
-        }
+          if (!ModelState.IsValid || _context.Serial == null || Serial == null)
+            {
+                return Page();
+            }
 
-            _context.Movie.Add(Movie);
+            _context.Serial.Add(Serial);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

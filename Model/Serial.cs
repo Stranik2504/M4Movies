@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace M4Movies.Model
 {
-    public class Movie
+    public class Serial
     {
         public int Id { get; set; }
 
@@ -20,10 +22,13 @@ namespace M4Movies.Model
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
         public string Genre { get; set; }
 
-        [Range(0.1, 100)]
-        [DataType(DataType.Currency)]
-        [Column(TypeName = "decimal(18, 2)")]
-        public decimal Price { get; set; }
+        [Range(1, int.MaxValue)]
+        [Required]
+        public int CountSeries { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        public string Author { get; set; }
 
         [Required]
         [StringLength(5)]

@@ -15,5 +15,7 @@ namespace M4Movies.Data
         }
 
         public DbSet<M4Movies.Model.Movie> Movie { get; set; } = default!;
+
+        public DbSet<M4Movies.Model.Serial>? Serial { get; set; }
     }
 }
